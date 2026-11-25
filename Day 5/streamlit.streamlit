@@ -1,0 +1,103 @@
+#Implemented a basic tags in Streamlit
+
+import streamlit as st 
+import time
+
+st.title("hello")
+st.header("hello")
+st.subheader("hello")
+st.text("hello")
+st.success("hello")
+st.markdown("hello")
+st.code("hello")
+st.info("info tag hello")
+st.warning("warning hello")
+st.error("error hello")
+
+##Button Tags...
+st.title("Buttons")
+if st.button("click me"):
+    st.success("button clicked successfully")
+
+#Text input...
+st.text_input("Enter text")
+
+#Number input...(with restrictions)
+st.number_input("Enter number", min_value=1, max_value=100, value=20)
+
+#text area...
+st.text_area("Text area")
+
+#Select box...
+course=st.selectbox(
+    "select-box course",
+    ["python","java", "hi"]
+)
+
+#radio box...
+course=st.radio(
+    "radio-select course",
+    ["python","java", "hi"]
+)
+#Multi-select...
+course=st.multiselect(
+    "multi-select course",
+    ["python","java", "hi"]
+)
+#checkbox...
+agree=st.checkbox("I agree with checkbox")
+if agree:
+    st.success("Done")
+
+#sliders..
+marks=st.slider(
+    "select-slider marks",
+    min_value=3, max_value=20
+)
+
+#store data...
+students=[
+    {"Name":"B","marks":56},
+    {"Name":"Anitha","marks":86}
+]
+st.table(students)
+
+##GRAPH...
+data={
+    "python":80,
+    "java":67,
+    "hello":45
+}
+st.bar_chart(data)
+st.line_chart(data)
+st.scatter_chart(data)
+
+#upload file...
+file=st.file_uploader("upload file")
+if file is not None:
+    st.success("file uploaded")
+
+#download file...
+text="welcome to downloading"
+st.download_button(
+    label="text file",
+    data=text,
+    file_name="w.txt",
+    mime="text/plain"
+)
+
+#progress bar...
+if st.button("start"):
+    progress=st.progress(0)
+    
+    for i in range(101):
+        progress.progress(i)
+        time.sleep(0.02)
+    st.success("progess done")
+
+#spinner bar...
+if st.button("spinner"):
+    with st.spinner("progressing"):
+        time.sleep(3)
+    st.success("spinner done")
+st.snow()
